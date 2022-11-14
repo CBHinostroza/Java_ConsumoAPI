@@ -29,9 +29,8 @@ public class APIGeneric extends ClaseGlobal {
     private final ObjectMapper mapper = new ObjectMapper();
 
     public <T> T Listar(TypeReference<T> references, String endpoint) {
-        HttpResponse<String> response = null;
         try {
-            response = ReturnBody(endpoint);
+            HttpResponse<String> response = ReturnBody(endpoint);
             //Ignorará todas las propiedades que no estén declaradas en una entidad.
             this.mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             if (response.statusCode() == 200) {
@@ -44,11 +43,10 @@ public class APIGeneric extends ClaseGlobal {
     }
 
     public boolean Guardar(Map<Object, Object> objeto, String endpoint) {
-        HttpResponse<String> response = null;
         try {
             String requestBody = this.mapper.writerWithDefaultPrettyPrinter().writeValueAsString(objeto);
             HttpRequest request = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(requestBody)).uri(URI.create(this.api + endpoint)).setHeader("Content-type", "application/json").build();
-            response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             return objUtilitarios.RespuestasHttpBoolean(response.statusCode());
         } catch (IOException | InterruptedException ex) {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
@@ -57,12 +55,11 @@ public class APIGeneric extends ClaseGlobal {
     }
 
     public boolean Actualizar(Map<Object, Object> objeto, String endpoint) {
-        HttpResponse<String> response = null;
         try {
             String requestBody = this.mapper.writerWithDefaultPrettyPrinter().writeValueAsString(objeto);
             HttpRequest request = HttpRequest.newBuilder().PUT(HttpRequest.BodyPublishers.ofString(requestBody)).uri(URI.create(api + endpoint)).setHeader("Content-type", "application/json").build();
             System.out.println(requestBody);
-            response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             return objUtilitarios.RespuestasHttpBoolean(response.statusCode());
         } catch (IOException | InterruptedException ex) {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
@@ -71,10 +68,9 @@ public class APIGeneric extends ClaseGlobal {
     }
 
     public boolean Eliminar(String endpoint) {
-        HttpResponse<String> response = null;
         try {
             HttpRequest request = HttpRequest.newBuilder().DELETE().uri(URI.create(api + endpoint)).setHeader("Content-type", "application/json").build();
-            response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             return objUtilitarios.RespuestasHttpBoolean(response.statusCode());
         } catch (IOException | InterruptedException ex) {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
