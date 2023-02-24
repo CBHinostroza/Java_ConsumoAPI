@@ -57,7 +57,7 @@ public class APIGeneric extends ClaseGlobal {
     public boolean Actualizar(Map<Object, Object> objeto, String endpoint) {
         try {
             String requestBody = this.mapper.writerWithDefaultPrettyPrinter().writeValueAsString(objeto);
-            HttpRequest request = HttpRequest.newBuilder().PUT(HttpRequest.BodyPublishers.ofString(requestBody)).uri(URI.create(api + endpoint)).setHeader("Content-type", "application/json").build();
+            HttpRequest request = HttpRequest.newBuilder().PUT(HttpRequest.BodyPublishers.ofString(requestBody)).uri(URI.create(this.api + endpoint)).setHeader("Content-type", "application/json").build();
             System.out.println(requestBody);
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             return objUtilitarios.RespuestasHttpBoolean(response.statusCode());
@@ -69,7 +69,7 @@ public class APIGeneric extends ClaseGlobal {
 
     public boolean Eliminar(String endpoint) {
         try {
-            HttpRequest request = HttpRequest.newBuilder().DELETE().uri(URI.create(api + endpoint)).setHeader("Content-type", "application/json").build();
+            HttpRequest request = HttpRequest.newBuilder().DELETE().uri(URI.create(this.api + endpoint)).setHeader("Content-type", "application/json").build();
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             return objUtilitarios.RespuestasHttpBoolean(response.statusCode());
         } catch (IOException | InterruptedException ex) {
@@ -79,7 +79,7 @@ public class APIGeneric extends ClaseGlobal {
     }
 
     private HttpResponse ReturnBody(String endpoint) {
-        HttpRequest request = HttpRequest.newBuilder().GET().uri(URI.create(api + endpoint)).build();
+        HttpRequest request = HttpRequest.newBuilder().GET().uri(URI.create(this.api + endpoint)).build();
         HttpResponse<String> response = null;
         try {
             response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());

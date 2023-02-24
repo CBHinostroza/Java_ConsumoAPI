@@ -45,7 +45,7 @@ public class Inicio extends javax.swing.JFrame {
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         lblTitulo.setForeground(java.awt.Color.white);
-        lblTitulo.setText("Sincronizar Usuarios");
+        lblTitulo.setText("Sincronización");
         lblTitulo.setToolTipText("PDSSA002");
 
         javax.swing.GroupLayout jpTituloLayout = new javax.swing.GroupLayout(jpTitulo);
@@ -53,7 +53,7 @@ public class Inicio extends javax.swing.JFrame {
         jpTituloLayout.setHorizontalGroup(
             jpTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTituloLayout.createSequentialGroup()
-                .addContainerGap(66, Short.MAX_VALUE)
+                .addContainerGap(62, Short.MAX_VALUE)
                 .addComponent(lblTitulo)
                 .addContainerGap())
         );
@@ -63,8 +63,9 @@ public class Inicio extends javax.swing.JFrame {
         );
 
         btnRefrescar.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        btnRefrescar.setMnemonic('A');
+        btnRefrescar.setToolTipText("Sincronizar");
         btnRefrescar.setContentAreaFilled(false);
+        btnRefrescar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRefrescar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnRefrescar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnRefrescar.setIconTextGap(-1);
@@ -82,17 +83,17 @@ public class Inicio extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jpTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(btnRefrescar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
+                .addComponent(btnRefrescar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jpTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnRefrescar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 25, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(btnRefrescar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -112,15 +113,12 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarActionPerformed
-
         if (objUsuarioDaoImpl.Actualizar(new Object())) {
             JOptionPane.showMessageDialog(null, "Sincronización Satisfactorio", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(null, "Error", "Mensaje", JOptionPane.WARNING_MESSAGE);
         }
-        
     }//GEN-LAST:event_btnRefrescarActionPerformed
 
     /**
@@ -159,7 +157,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnRefrescar;
+    private javax.swing.JButton btnRefrescar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JLabel lblTitulo;

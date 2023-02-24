@@ -15,7 +15,7 @@ import java.sql.ResultSet;
  */
 public class ClaseGlobal {
 
-    public static String Conexion = "LocalHost";
+    public static String Conexion = "Empresa";
 //    protected String api = "https://apimyperssoma.azurewebsites.net/api/";
     protected String api = "http://200.48.233.66:8099/api/";
     protected PreparedStatement ps;
