@@ -54,7 +54,6 @@ public class Conexion {
             ds.setPassword(contrasena);
             ds.setDatabaseName(baseDatos);
             conecction = ds.getConnection();
-            System.out.println("Conectado correctamente");
         } catch (SQLException ex) {
             System.out.println("Error en la conexion" + ex.getMessage());
             JOptionPane.showMessageDialog(null, ex.getMessage());

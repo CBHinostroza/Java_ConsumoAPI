@@ -6,6 +6,7 @@
 package com.api.herramientas;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,6 +41,7 @@ public class Utilitarios {
         }
         
         System.out.println(RespuestasHttpString(statusCode));
+        JOptionPane.showMessageDialog(null, RespuestasHttpString(statusCode), "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         return respuesta;
     }
     

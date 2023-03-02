@@ -114,11 +114,8 @@ public class Inicio extends javax.swing.JFrame {
 
     private void btnRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarActionPerformed
         if (objUsuarioDaoImpl.Actualizar(new Object())) {
-            JOptionPane.showMessageDialog(null, "Sincronización Satisfactorio", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Error", "Mensaje", JOptionPane.WARNING_MESSAGE);
-        }
+        } 
     }//GEN-LAST:event_btnRefrescarActionPerformed
 
     /**

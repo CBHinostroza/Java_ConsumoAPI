@@ -5,6 +5,7 @@
  */
 package com.api.daoimpl;
 
+import com.api.clases.ClaseGlobal;
 import com.api.conexion.Conexion;
 import com.api.dao.UsuarioDao;
 import com.api.generic.APIGeneric;
@@ -24,8 +25,16 @@ import javax.swing.JOptionPane;
 public class UsuarioDaoImpl extends APIGeneric implements UsuarioDao {
 
     Conexion cnx;
+    String epActualizar = "";
 
-    String epActualizar = "Usuariosapi/Actualizar";
+    public UsuarioDaoImpl() {
+
+        if (ClaseGlobal.Conexion.equals("Empresa")) {
+            epActualizar = "Usuariosapi/Actualizar";
+        } else {
+            epActualizar = "Usuariosapi/Actualizar";
+        }
+    }
 
     @Override
     public boolean Guardar(Object modelo) {
@@ -49,7 +58,7 @@ public class UsuarioDaoImpl extends APIGeneric implements UsuarioDao {
                     + "WHERE TBM_USUAR.EST_ACTIV = 'S'");
             rs = ps.executeQuery();
             lista = new LinkedList<>();
-            
+
             System.out.println("Usuario \t Contraseña");
             while (rs.next()) {
                 Usuario objeto = new Usuario();
@@ -61,7 +70,7 @@ public class UsuarioDaoImpl extends APIGeneric implements UsuarioDao {
                 lista.add(objeto);
                 System.out.println(rs.getString(1) + " \t " + ep.decrypt(rs.getString(2)));
             }
-            
+
             Map<Object, Object> map = new HashMap<>();
             map.put("lista", lista);
             return this.Actualizar(map, epActualizar);
